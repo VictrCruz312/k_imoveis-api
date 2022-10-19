@@ -11,11 +11,11 @@ export class SchedulesUsersProperties {
   date: Date;
 
   @Column({ type: "time" })
-  hour: Date;
+  hour: string;
 
   @ManyToOne(() => Properties)
   property: Properties;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { eager: true })
   user: User;
 }
