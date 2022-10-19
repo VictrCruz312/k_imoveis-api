@@ -3,12 +3,14 @@ import { IPropertyRequest } from "../interfaces/properties";
 import AppDataSource from "../data-source";
 import { appError } from "../errors/appError";
 import { addresses } from "../entities/addresses.entity";
+import { Categories } from "../entities/categories.entity";
 
 const createPropertyService = async (
   data: IPropertyRequest
 ): Promise<Properties> => {
   const propertyRepository = AppDataSource.getRepository(Properties);
   const addressesRepository = AppDataSource.getRepository(addresses);
+  const categoryRepository = AppDataSource.getRepository(Categories);
 
   const addressIsExists = await addressesRepository.findOneBy({
     district: data.address.district,
@@ -22,13 +24,33 @@ const createPropertyService = async (
     throw new appError("address already exists");
   }
 
-  const adress = addressesRepository.create(data.address);
-  await addressesRepository.save(adress);
+  const category = await categoryRepository.findOneBy({
+    id: data.categoryId,
+  });
 
-  const property = propertyRepository.create(data);
+  if (!category) {
+    throw new appError("Category is not exists", 404);
+  }
+
+  const address = addressesRepository.create(data.address);
+  await addressesRepository.save(address);
+
+  const property = propertyRepository.create({ ...data, category, address });
   await propertyRepository.save(property);
 
   return property;
 };
 
-export { createPropertyService };
+const getPropertiesService = async (): Promise<Properties[]> => {
+  const propertiesRepository = AppDataSource.getRepository(Properties);
+
+  const properties = await propertiesRepository.find({
+    relations: {
+      category: true,
+    },
+  });
+
+  return properties;
+};
+
+export { createPropertyService, getPropertiesService };
