@@ -61,7 +61,7 @@ const updateUserService = async (
   const userRepository = AppDataSource.getRepository(User);
   const user = await userRepository.findOneBy({ id: id });
   if (!user) {
-    throw new appError("User not found");
+    throw new appError("User not found", 404);
   }
 
   if (!permission.isAdm) {
@@ -93,11 +93,11 @@ const deleteUserService = async (id: string): Promise<{ message: string }> => {
   const userRepository = AppDataSource.getRepository(User);
   const userToDelete = await userRepository.findOneBy({ id });
   if (!userToDelete) {
-    throw new appError("user not found to delete");
+    throw new appError("user not found to delete", 404);
   }
 
   if (!userToDelete.isActive) {
-    throw new appError("user not found to delete", 400);
+    throw new appError("user not found to delete");
   }
   await userRepository.update(id, {
     isActive: false,
