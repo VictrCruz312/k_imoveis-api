@@ -5,7 +5,7 @@ import {
   deleteUserService,
   getUsersService,
   updateUserService,
-} from "../services/users.services";
+} from "../services/users.service";
 
 const createUserControler = async (req: Request, res: Response) => {
   const data: IUserRequest = req.body;

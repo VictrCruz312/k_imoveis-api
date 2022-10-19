@@ -7,9 +7,11 @@ import {
   OneToOne,
   JoinColumn,
   ManyToOne,
+  OneToMany,
 } from "typeorm";
 import { addresses } from "./addresses.entity";
 import { Categories } from "./categories.entity";
+import { SchedulesUsersProperties } from "./schedulesUsersProperties.entity";
 
 @Entity("properties")
 export class Properties {
@@ -31,10 +33,16 @@ export class Properties {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne(() => addresses)
+  @OneToOne(() => addresses, { eager: true })
   @JoinColumn()
-  adressId: addresses;
+  address: addresses;
 
   @ManyToOne(() => Categories)
-  categoryId: Categories;
+  category: Categories;
+
+  @OneToMany(
+    () => SchedulesUsersProperties,
+    (schedulesUsersProperties) => schedulesUsersProperties.property
+  )
+  schedulesUsersProperties: SchedulesUsersProperties[];
 }
