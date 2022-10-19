@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { appError } from "../errors/appError";
 import { IUserLogin } from "../interfaces/users";
-import { loginService } from "../services/login.services";
+import { loginService } from "../services/login.service";
 
 const loginController = async (req: Request, res: Response) => {
   const data: IUserLogin = req.body;

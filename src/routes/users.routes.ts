@@ -4,7 +4,7 @@ import {
   deleteUserController,
   getUsersController,
   updateUserController,
-} from "../controllers/users.controllers";
+} from "../controllers/users.controller";
 import ensureAuthMiddleware from "../middlewares/ensureAuth.middleware";
 import ensureIsAdmMiddleware from "../middlewares/ensureIsAdm.middleware";
 import ensureKeysMiddleware from "../middlewares/ensureKeys.middleware";

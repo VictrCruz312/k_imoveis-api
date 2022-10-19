@@ -2,7 +2,8 @@ import { Router } from "express";
 import {
   createCategoryController,
   getCategoriesController,
-} from "../controllers/categories.controllers";
+  getPropertiesInCategoryController,
+} from "../controllers/categories.controller";
 import ensureAuthMiddleware from "../middlewares/ensureAuth.middleware";
 import ensureIsAdmMiddleware from "../middlewares/ensureIsAdm.middleware";
 
@@ -14,7 +15,7 @@ categoriesRouter.post(
   ensureIsAdmMiddleware,
   createCategoryController
 );
-
 categoriesRouter.get("", getCategoriesController);
+categoriesRouter.get("/:id/properties", getPropertiesInCategoryController);
 
 export default categoriesRouter;

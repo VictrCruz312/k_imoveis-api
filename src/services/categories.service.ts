@@ -1,3 +1,4 @@
+import { getRepository } from "typeorm";
 import AppDataSource from "../data-source";
 import { Categories } from "../entities/categories.entity";
 import { appError } from "../errors/appError";
@@ -27,4 +28,27 @@ const getCategoriesService = async (): Promise<Categories[]> => {
   return categories;
 };
 
-export { createCategoryService, getCategoriesService };
+const getPropertiesInCategoryService = async (
+  categoryId: string
+): Promise<Categories> => {
+  const categoriesRepository = AppDataSource.getRepository(Categories);
+
+  const categoryProperties = await categoriesRepository.findOne({
+    where: {
+      id: categoryId,
+    },
+    relations: { properties: true },
+  });
+
+  if (!categoryProperties) {
+    throw new appError("category is not exist", 404);
+  }
+
+  return categoryProperties;
+};
+
+export {
+  createCategoryService,
+  getCategoriesService,
+  getPropertiesInCategoryService,
+};
