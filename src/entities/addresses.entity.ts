@@ -8,7 +8,7 @@ export class addresses {
   @Column()
   district: string;
 
-  @Column()
+  @Column({ length: 8 })
   zipCode: string;
 
   @Column()
@@ -17,6 +17,6 @@ export class addresses {
   @Column()
   city: string;
 
-  @Column()
+  @Column({ length: 2 })
   state: string;
 }
