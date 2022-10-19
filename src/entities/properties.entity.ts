@@ -7,9 +7,11 @@ import {
   OneToOne,
   JoinColumn,
   ManyToOne,
+  OneToMany,
 } from "typeorm";
 import { addresses } from "./addresses.entity";
 import { Categories } from "./categories.entity";
+import { SchedulesUsersProperties } from "./schedulesUsersProperties.entity";
 
 @Entity("properties")
 export class Properties {
@@ -33,8 +35,14 @@ export class Properties {
 
   @OneToOne(() => addresses)
   @JoinColumn()
-  adressId: addresses;
+  adress: addresses;
 
   @ManyToOne(() => Categories)
-  categoryId: Categories;
+  category: Categories;
+
+  @OneToMany(
+    () => SchedulesUsersProperties,
+    (schedulesUsersProperties) => schedulesUsersProperties.property
+  )
+  schedulesUsersProperties: SchedulesUsersProperties[];
 }
