@@ -1,4 +1,4 @@
-# S5-19 | 🏁 Entrega: KImóveis - TypeORM com Relacionamentos
+# KImoveis Api
 
 Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas nos testes. Portanto utilize o comando abaixo para instalar tais dependências:
 
@@ -36,7 +36,7 @@ docker compose up --build
 ````
 O comando pode variar com a versão do docker compose instalada em sua máquina
 
-***ATENÇÃO:*** a porta utilizada para rodar nosso docker é a `5431`.
+***ATENÇÃO:*** a porta utilizada para rodar nosso docker é a `5436`.
 Caso tenha algum problema com essa porta, basta alterá-la no docker-compose.yml.
 
 <br>
