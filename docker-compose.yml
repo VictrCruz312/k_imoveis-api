@@ -6,8 +6,12 @@ services:
     build: .
     ports:
       - 3000:3000
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_USER=victor
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=user_database
+      - POSTGRES_HOST=db
+      - NODE_ENV=development
     depends_on:
       db:
         condition: service_healthy
@@ -19,10 +23,8 @@ services:
     image: postgres:14-alpine
     ports:
       - 5436:5432
-    env_file:
-      - .env
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      test: ["CMD-SHELL", "pg_isready -U victor -d user_database "]
       interval: 10s
       timeout: 5s
       retries: 5

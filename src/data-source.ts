@@ -9,6 +9,19 @@ const AppDataSource = new DataSource(
         synchronize: true,
         entities: ["src/entities/*.ts"],
       }
+    : process.env.NODE_ENV === "development"
+    ? {
+        type: "postgres",
+        host: process.env.POSTGRES_HOST,
+        port: 5432,
+        database: process.env.POSTGRES_DB,
+        username: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        logging: true,
+        synchronize: false,
+        entities: ["src/entities/*.ts"],
+        migrations: ["src/migrations/*.ts"],
+      }
     : {
         type: "postgres",
         url: process.env.DATABASE_URL,
