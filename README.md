@@ -13,6 +13,7 @@
 6. deploy no HEROKU
 7. Jest
 8. padrão de arquitetura MVC
+9. Docker & docker-compose
 
 ## Caso queira executar o projeto no host local e adicionar outras features siga estes passos:
 Ao iniciar o servidor na sua máquina a aplicação vai rodar na porta 3000.
