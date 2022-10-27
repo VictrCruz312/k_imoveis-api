@@ -3,6 +3,17 @@
 ## Acesse a <a href="https://victrcruz312.github.io/documentation_api_k-imoveis/">documentação da API</a> para entender cada rota
 ## Utilize a seguinte rota para os endpoints da API: <a href="https://k-imoveis-api.herokuapp.com/">https://k-imoveis-api.herokuapp.com/</a>
 
+### Tecnólogias utilizadas
+
+1. NodeJS
+2. ExpressJS
+3. TypeScript
+4. TypeORM
+5. postgreSQL
+6. deploy no HEROKU
+7. Jest
+8. padrão de arquitetura MVC
+
 ## Caso queira executar o projeto no host local e adicionar outras features siga estes passos:
 Ao iniciar o servidor na sua máquina a aplicação vai rodar na porta 3000.
 
