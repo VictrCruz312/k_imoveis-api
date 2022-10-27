@@ -1,8 +1,9 @@
 # KImoveis Api
 
 ## Acesse a <a href="https://victrcruz312.github.io/documentation_api_k-imoveis/">documentação da API</a> para entender cada rota
+## Utilize a seguinte rota para os endpoints da API: <a href="https://k-imoveis-api.herokuapp.com/">https://k-imoveis-api.herokuapp.com/</a>
 
-## Para executar o projeto na sua máquina siga estes passos:
+## Caso queira executar o projeto no host local e adicionar outras features siga estes passos:
 Ao iniciar o servidor na sua máquina a aplicação vai rodar na porta 3000.
 
 Para iniciar este projeto, é necessário instalar as dependências, que serão utilizadas nos testes. Portanto utilize o comando abaixo para instalar tais dependências:
